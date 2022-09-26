@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SendMessage</string>
+    <string name="etMessageHint">Escribe un mensaje</string>
+    <string name="etMessageText" />
+    <string name="btSendText">Enviar</string>
+    <string name="etUserHint">Introduce tu nombre</string>
+    <string name="etUserText" />
+    <string name="txtUser">El usuario:</string>
+    <string name="txtInputUser" />
+    <string name="txtMessage">Ha escrito el mensaje:</string>
+    <string name="txtInputMessage" />
+</resources>
