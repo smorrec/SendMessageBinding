@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewMessageActivity">
+
+    <TextView
+        android:id="@+id/textUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtUser"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/textUserMarginTop" />
+
+    <TextView
+        android:id="@+id/textInputUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtInputUser"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/textInputUserMarginTop" />
+
+    <TextView
+        android:id="@+id/textMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtMessage"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/textMessageMarginTop"/>
+
+    <TextView
+        android:id="@+id/textInputMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/txtInputMessage"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/textInputMessageMarginTop"/>
+</LinearLayout>
