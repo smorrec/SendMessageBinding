@@ -2,8 +2,11 @@ package com.example.sendmessage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * <h1>Proyecto SendMessage</h1>
@@ -23,18 +26,33 @@ import android.view.View;
  * @see android.os.Bundle
  */
 public class SendMessageActivity extends AppCompatActivity {
+    private EditText etUser;
+    private EditText etMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
+        etUser = findViewById(R.id.etUser);
+        etMessage = findViewById(R.id.etMessage);
     }
 
     /**
      * Este método es el que se llama cuando se pulsa sobre el btSend definido en el XML
-     * android:onclick="sendMessage"
+     * <code>android:onclick="sendMessage"</code>
      * @param view
      */
     public void sendMessage(View view) {
+        //Toast.makeText(this, "Hemos pulsado el botón", Toast.LENGTH_SHORT).show();
+        //1. Crear el contenedor para añadir los datos
+        Bundle bundle = new Bundle();
+        bundle.putString("user", etUser.getText().toString());
+        bundle.putString("message", etMessage.getText().toString());
+        //2. Vamos a crear el objeto intent explicito porque se conoce la actividad destino
+        Intent intent = new Intent(this, ViewMessageActivity.class);
+        intent.putExtras(bundle);
+        //3. Se inicia la transicion entre una vista y otra
+        startActivity(intent);
+
     }
 }
