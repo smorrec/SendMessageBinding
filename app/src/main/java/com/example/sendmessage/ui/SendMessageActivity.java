@@ -1,4 +1,4 @@
-package com.example.sendmessage;
+package com.example.sendmessage.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.sendmessage.R;
+import com.example.sendmessage.data.Message;
 
 /**
  * <h1>Proyecto SendMessage</h1>
@@ -46,8 +48,11 @@ public class SendMessageActivity extends AppCompatActivity {
         //Toast.makeText(this, "Hemos pulsado el botón", Toast.LENGTH_SHORT).show();
         //1. Crear el contenedor para añadir los datos
         Bundle bundle = new Bundle();
-        bundle.putString("user", etUser.getText().toString());
-        bundle.putString("message", etMessage.getText().toString());
+        //1.1. Pasar dato a dato
+        //1.2. Crear un objeto Message
+        Message message = new Message(etUser.getText().toString(), etMessage.getText().toString());
+        bundle.putParcelable("message", message);
+
         //2. Vamos a crear el objeto intent explicito porque se conoce la actividad destino
         Intent intent = new Intent(this, ViewMessageActivity.class);
         intent.putExtras(bundle);
