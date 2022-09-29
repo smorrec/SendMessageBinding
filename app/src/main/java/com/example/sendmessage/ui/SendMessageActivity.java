@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -28,23 +29,72 @@ import com.example.sendmessage.data.Message;
  * @see android.os.Bundle
  */
 public class SendMessageActivity extends AppCompatActivity {
+    private static final String TAG = "SendMessageActivity";
     private EditText etUser;
     private EditText etMessage;
 
+    //region Ciclo de vida de la Activity
+
     @Override
+    /**
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
         etUser = findViewById(R.id.etUser);
         etMessage = findViewById(R.id.etMessage);
+        Log.d(TAG, "SendMessgaeActivity -> onCreate()");
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "SendMessgaeActivity -> onStart()");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "SendMessgaeActivity -> onResume()");
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "SendMessgaeActivity -> onPause()");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "SendMessgaeActivity -> onStop()");
+
+    }
+
+    /**
+     * Este método se ejecuta cuando se destruye la Activity
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        etUser = null;
+        etMessage = null;
+        Log.d(TAG, "SendMessgaeActivity -> onDestroy()");
+
+    }
+
+    //endregion
     /**
      * Este método es el que se llama cuando se pulsa sobre el btSend definido en el XML
      * <code>android:onclick="sendMessage"</code>
      * @param view
      */
     public void sendMessage(View view) {
+        //TODO Se modificará este ejercicio para estudiar ViewBinding
         //Toast.makeText(this, "Hemos pulsado el botón", Toast.LENGTH_SHORT).show();
         //1. Crear el contenedor para añadir los datos
         Bundle bundle = new Bundle();
