@@ -1,4 +1,4 @@
-package com.example.sendmessage.ui;
+package com.example.sendmessagebinding.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.sendmessage.R;
-import com.example.sendmessage.data.Message;
+import com.example.sendmessagebinding.data.Message;
+import com.example.sendmessagebinding.databinding.ActivitySendMessageBinding;
 
 /**
  * <h1>Proyecto SendMessage</h1>
@@ -33,10 +30,8 @@ import com.example.sendmessage.data.Message;
  */
 public class SendMessageActivity extends AppCompatActivity {
     private static final String TAG = "SendMessageActivity";
-    private EditText etUser;
-    private EditText etMessage;
-    private Button btSend;
     private SendMessageOnClickedListener delegate;
+    private ActivitySendMessageBinding binding;
     //region Ciclo de vida de la Activity
 
     @Override
@@ -45,10 +40,9 @@ public class SendMessageActivity extends AppCompatActivity {
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_message);
-        etUser = findViewById(R.id.etUser);
-        etMessage = findViewById(R.id.etMessage);
-        btSend = findViewById(R.id.btSend);
+        binding = ActivitySendMessageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
         /*//Se inicializa el delegado
         delegate = new SendMessageOnClickedListener();
@@ -57,7 +51,7 @@ public class SendMessageActivity extends AppCompatActivity {
 
         //Establecer el Listener OnClickedLIstener al botón
         //imnplementa la interfaz View.OnClickedListener
-        btSend.setOnClickListener(view -> sendMessage());
+        binding.btSend.setOnClickListener(view -> sendMessage());
                 //view -> Toast.makeText(SendMessageActivity.this, "Esto es un evento", Toast.LENGTH_SHORT).show());
         Log.d(TAG, "SendMessgaeActivity -> onCreate()");
     }
@@ -96,8 +90,7 @@ public class SendMessageActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        etUser = null;
-        etMessage = null;
+        binding = null;
         Log.d(TAG, "SendMessgaeActivity -> onDestroy()");
 
     }
@@ -121,7 +114,7 @@ public class SendMessageActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         //1.1. Pasar dato a dato
         //1.2. Crear un objeto Message
-        Message message = new Message(etUser.getText().toString(), etMessage.getText().toString());
+        Message message = new Message(binding.etUser.getText().toString(), binding.etMessage.getText().toString());
         bundle.putParcelable("message", message);
 
         //2. Vamos a crear el objeto intent explicito porque se conoce la actividad destino

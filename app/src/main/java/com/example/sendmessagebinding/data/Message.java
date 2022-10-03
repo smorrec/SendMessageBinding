@@ -1,4 +1,4 @@
-package com.example.sendmessage.data;
+package com.example.sendmessagebinding.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

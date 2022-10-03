@@ -1,13 +1,11 @@
-package com.example.sendmessage.ui;
+package com.example.sendmessagebinding.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
-
-import com.example.sendmessage.R;
-import com.example.sendmessage.data.Message;
+import com.example.sendmessagebinding.data.Message;
+import com.example.sendmessagebinding.databinding.ActivityViewMessageBinding;
 
 /**
  * Clase que muestra un mensaje de un usuario. Recoge el mensaje que implementa la interfaz Parcelable
@@ -16,21 +14,20 @@ import com.example.sendmessage.data.Message;
  */
 public class ViewMessageActivity extends AppCompatActivity {
     private static final String TAG = "ViewMessageActivity";
-    private TextView textInputUser;
-    private TextView textInputMessage;
+    private ActivityViewMessageBinding binding;
 
     //region Ciclo de vida
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_message);
-        textInputUser = findViewById(R.id.textInputUser);
-        textInputMessage = findViewById(R.id.textInputMessage);
+        binding = ActivityViewMessageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         //1. Recoger el Bundle que me han pasado en el Intent que ha iniciado esta actividad
         Bundle bundle = getIntent().getExtras();
         Message message = bundle.getParcelable("message");
-        textInputUser.setText(message.getUser());
-        textInputMessage.setText(message.getContent());
+        binding.textInputUser.setText(message.getUser());
+        binding.textInputMessage.setText(message.getContent());
 
     }
     @Override
@@ -67,8 +64,7 @@ public class ViewMessageActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        textInputUser = null;
-        textInputMessage = null;
+        binding = null;
         Log.d(TAG, "ViewMessgaeActivity -> onDestroy()");
 
     }

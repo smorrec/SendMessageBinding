@@ -1,4 +1,4 @@
-package com.example.sendmessage;
+package com.example.sendmessagebinding;
 
 import android.content.Context;
 
