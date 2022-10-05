@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SendMessage</string>
+    <string name="app_name">SendMessageBinding</string>
     <string name="etMessageHint">Escribe un mensaje</string>
     <string name="etMessageText" />
     <string name="btSendText">Enviar</string>
@@ -9,4 +9,5 @@
     <string name="txtInputUser" />
     <string name="txtMessage">Ha escrito el mensaje:</string>
     <string name="txtInputMessage" />
+    <string name="abouts"/>
 </resources>

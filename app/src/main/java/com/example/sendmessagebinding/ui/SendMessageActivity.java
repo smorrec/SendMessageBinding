@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.sendmessagebinding.SendMessageApplication;
 import com.example.sendmessagebinding.data.Message;
 import com.example.sendmessagebinding.data.User;
 import com.example.sendmessagebinding.databinding.ActivitySendMessageBinding;
@@ -31,7 +33,7 @@ import com.example.sendmessagebinding.databinding.ActivitySendMessageBinding;
  */
 public class SendMessageActivity extends AppCompatActivity {
     private static final String TAG = "SendMessageActivity";
-    private SendMessageOnClickedListener delegate;
+    //private SendMessageOnClickedListener delegate;
     private ActivitySendMessageBinding binding;
     //region Ciclo de vida de la Activity
 
@@ -52,7 +54,9 @@ public class SendMessageActivity extends AppCompatActivity {
 
         //Establecer el Listener OnClickedLIstener al botón
         //imnplementa la interfaz View.OnClickedListener
-        binding.setMessage(new Message(new User("Sergio", "email@email")));
+        //binding.setMessage(new Message(new User("Sergio", "email@email")));
+        SendMessageApplication app = (SendMessageApplication) getApplication();
+        binding.setMessage(new Message(app.getUser()));
         binding.btSend.setOnClickListener(view -> sendMessage());
                 //view -> Toast.makeText(SendMessageActivity.this, "Esto es un evento", Toast.LENGTH_SHORT).show());
         Log.d(TAG, "SendMessgaeActivity -> onCreate()");
@@ -121,7 +125,7 @@ public class SendMessageActivity extends AppCompatActivity {
         //bundle.putString("user", binding.getMessage().getUser().getName());
         //bundle.putString("message", binding.getMessage().getContent());
 
-        //Pasar el objeto entero
+        //P
         bundle.putParcelable("message", binding.getMessage());
 
         //2. Vamos a crear el objeto intent explicito porque se conoce la actividad destino
@@ -132,10 +136,10 @@ public class SendMessageActivity extends AppCompatActivity {
 
     }
 
-
+    /*
     /**
      * Esta clase no anónima implementa al listener que responde siempre al método OnClicked
-     */
+
     class SendMessageOnClickedListener implements View.OnClickListener {
 
         @Override
@@ -143,4 +147,5 @@ public class SendMessageActivity extends AppCompatActivity {
             Toast.makeText(SendMessageActivity.this, "Esto es a través de un delegado", Toast.LENGTH_SHORT).show();
         }
     }
+    */
 }
