@@ -7,9 +7,8 @@
             type="com.example.sendmessagebinding.data.Message" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
 
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -24,7 +23,7 @@
             android:hint="@string/etUserHint"
             android:inputType="text"
             android:minHeight="@dimen/etUserMinHeight"
-            android:text="@string/etUserText"
+            android:text="@{message.user.name}"
             android:textColorHint="@color/etUserColorHint" />
 
         <EditText
@@ -36,7 +35,7 @@
             android:hint="@string/etMessageHint"
             android:inputType="text"
             android:minHeight="@dimen/etMessageMinHeight"
-            android:text="@string/etMessageText"
+            android:text="@={message.content}"
             android:textColorHint="@color/etMessageColorHint" />
 
         <Button

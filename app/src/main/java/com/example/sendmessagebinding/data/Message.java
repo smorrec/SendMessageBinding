@@ -5,13 +5,16 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 /**
- * Clase modelo que contiene el dato del usuario y el mensaje que manda
+ * Clase modelo que contiene el dato del usuario y el mensaje que manda.
+ * Al ser un objeto se debe implementar la interfaz Serializable y Parcelabe en el objeto User
  * @author smorrec
  * @version 1.0
  */
-public class Message implements Parcelable {
-    private String user;
+public class Message implements Parcelable, Serializable {
+    private User user;
     private String content;
 
     /**
@@ -19,18 +22,23 @@ public class Message implements Parcelable {
      * @param user
      * @param content
      */
-    public Message(String user, String content) {
+    public Message(User user, String content) {
         this.user = user;
         this.content = content;
     }
 
+    public Message(User user) {
+        this.user = user;
+    }
+
     //Por defecto si no de declara un constructor java implementa el constructor vacio
 
-    public String getUser() {
+
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -52,9 +60,10 @@ public class Message implements Parcelable {
         return getUser() + " -> " + getContent();
     }
 
+
     //region MÉTODOS CREADOS POR LA INTERFAZ
     protected Message(Parcel in) {
-        user = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
         content = in.readString();
     }
 
@@ -77,7 +86,7 @@ public class Message implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(user);
+        parcel.writeParcelable(user, i);
         parcel.writeString(content);
     }
     //endregion

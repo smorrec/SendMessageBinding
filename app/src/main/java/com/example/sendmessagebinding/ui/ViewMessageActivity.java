@@ -26,8 +26,10 @@ public class ViewMessageActivity extends AppCompatActivity {
         //1. Recoger el Bundle que me han pasado en el Intent que ha iniciado esta actividad
         Bundle bundle = getIntent().getExtras();
         Message message = bundle.getParcelable("message");
-        binding.textInputUser.setText(message.getUser());
-        binding.textInputMessage.setText(message.getContent());
+
+        binding.setMessage(message);
+        //binding.textInputUser.setText(message.getUser().getName());
+        //binding.textInputMessage.setText(message.getContent());
 
     }
     @Override

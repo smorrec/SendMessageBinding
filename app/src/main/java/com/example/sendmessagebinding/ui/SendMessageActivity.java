@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.example.sendmessagebinding.data.Message;
+import com.example.sendmessagebinding.data.User;
 import com.example.sendmessagebinding.databinding.ActivitySendMessageBinding;
 
 /**
@@ -51,6 +52,7 @@ public class SendMessageActivity extends AppCompatActivity {
 
         //Establecer el Listener OnClickedLIstener al botón
         //imnplementa la interfaz View.OnClickedListener
+        binding.setMessage(new Message(new User("Sergio", "email@email")));
         binding.btSend.setOnClickListener(view -> sendMessage());
                 //view -> Toast.makeText(SendMessageActivity.this, "Esto es un evento", Toast.LENGTH_SHORT).show());
         Log.d(TAG, "SendMessgaeActivity -> onCreate()");
@@ -114,8 +116,13 @@ public class SendMessageActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         //1.1. Pasar dato a dato
         //1.2. Crear un objeto Message
-        Message message = new Message(binding.etUser.getText().toString(), binding.etMessage.getText().toString());
-        bundle.putParcelable("message", message);
+        //Message message = new Message(binding.etUser.getText(), binding.etMessage.getText().toString());
+        //Pasar dato a dato
+        //bundle.putString("user", binding.getMessage().getUser().getName());
+        //bundle.putString("message", binding.getMessage().getContent());
+
+        //Pasar el objeto entero
+        bundle.putParcelable("message", binding.getMessage());
 
         //2. Vamos a crear el objeto intent explicito porque se conoce la actividad destino
         Intent intent = new Intent(this, ViewMessageActivity.class);
