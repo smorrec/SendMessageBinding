@@ -28,8 +28,6 @@ public class ViewMessageActivity extends AppCompatActivity {
         Message message = bundle.getParcelable("message");
 
         binding.setMessage(message);
-        //binding.textInputUser.setText(message.getUser().getName());
-        //binding.textInputMessage.setText(message.getContent());
 
     }
     @Override

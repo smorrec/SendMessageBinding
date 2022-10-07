@@ -9,12 +9,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.sendmessagebinding.R;
 import com.example.sendmessagebinding.SendMessageApplication;
 import com.example.sendmessagebinding.data.Message;
-import com.example.sendmessagebinding.data.User;
 import com.example.sendmessagebinding.databinding.ActivitySendMessageBinding;
 
 /**
@@ -61,7 +59,6 @@ public class SendMessageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_aboutus:
-                //Toast.makeText(this, "Se hapulsado sobre About us", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
                 break;
@@ -71,23 +68,11 @@ public class SendMessageActivity extends AppCompatActivity {
     }
 
     @Override
-    /**
-     *
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySendMessageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        /*//Se inicializa el delegado
-        delegate = new SendMessageOnClickedListener();
-        //Se establece el vinculo entre el Botón y el delegado
-        btSend.setOnClickListener(delegate);*/
-
-        //Establecer el Listener OnClickedLIstener al botón
-        //imnplementa la interfaz View.OnClickedListener
-        //binding.setMessage(new Message(new User("Sergio", "email@email")));
         SendMessageApplication app = (SendMessageApplication) getApplication();
         binding.setMessage(new Message(app.getUser()));
         binding.btSend.setOnClickListener(view -> sendMessage());
@@ -148,17 +133,9 @@ public class SendMessageActivity extends AppCompatActivity {
 
     public void sendMessage() {
         //TODO Se modificará este ejercicio para estudiar ViewBinding
-        //Toast.makeText(this, "Hemos pulsado el botón", Toast.LENGTH_SHORT).show();
-        //1. Crear el contenedor para añadir los datos
-        Bundle bundle = new Bundle();
-        //1.1. Pasar dato a dato
-        //1.2. Crear un objeto Message
-        //Message message = new Message(binding.etUser.getText(), binding.etMessage.getText().toString());
-        //Pasar dato a dato
-        //bundle.putString("user", binding.getMessage().getUser().getName());
-        //bundle.putString("message", binding.getMessage().getContent());
 
-        //P
+        Bundle bundle = new Bundle();
+
         bundle.putParcelable("message", binding.getMessage());
 
         //2. Vamos a crear el objeto intent explicito porque se conoce la actividad destino

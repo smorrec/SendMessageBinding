@@ -10,4 +10,8 @@
     <string name="txtMessage">Ha escrito el mensaje:</string>
     <string name="txtInputMessage" />
     <string name="aboutus">About us</string>
+    <string name="linkedIn">sergio-morales-recio-b23661178</string>
+    <string name="gitHub">smorrec/SendMessageBinding</string>
+    <string name="brief">Futuro desarrollador de videojuegos</string>
+    <string name="activity">Técnico Superior en desarrollo de aplicaiones multiplataforma</string>
 </resources>
