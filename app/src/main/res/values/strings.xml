@@ -9,5 +9,5 @@
     <string name="txtInputUser" />
     <string name="txtMessage">Ha escrito el mensaje:</string>
     <string name="txtInputMessage" />
-    <string name="abouts"/>
+    <string name="aboutus">About us</string>
 </resources>
